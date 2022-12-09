@@ -1,5 +1,14 @@
-const something = (): void => {
-  console.log('Utils Function.');
-};
+import { color } from './colors';
+import { shadow } from './shadows';
 
-export default something;
+export function checkColor(myColor: string): string {
+  return color[myColor] ?? myColor;
+}
+
+export function checkShadow(myShadow: string): string {
+  return shadow[myShadow] ?? myShadow;
+}
+
+export function isDefined(data: boolean): boolean {
+  return data !== null && data !== undefined;
+}

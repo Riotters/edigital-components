@@ -1,14 +1,11 @@
 import React from 'react';
-import './App.css';
-
-import Text from './components/atoms/Text';
+import '../src/styles/App.css';
+import Button from './components/Button';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Text text="2">
-        <div>xd</div>
-      </Text>
+      <Button>This is Test Button</Button>
     </div>
   );
 };
