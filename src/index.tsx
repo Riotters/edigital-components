@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import '../src/styles/index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './tests/reportWebVitals';
+import { ThemeProvider } from 'styled-components';
+import { DarkTheme, LightTheme } from './styles/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const isDarkTheme = false;
+
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
