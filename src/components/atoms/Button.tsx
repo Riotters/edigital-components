@@ -8,17 +8,22 @@ export interface ButtonWrapperProps {
   size?: string;
   variant?: string;
   disabled?: boolean;
-  iconFirst?: boolean;
+  border?: string;
+  text?: string | boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
   display: inline-flex;
-  flex-direction: ${(props) => (props.iconFirst ? 'row-reverse' : 'row')};
   justify-content: center;
   align-items: center;
   text-decoration: none;
   gap: 10px;
-  border-radius: 64px;
+  border-radius: ${(props) =>
+    props.border == 'normal'
+      ? '8px'
+      : props.border == 'small'
+      ? '8px'
+      : '64px'};
   border-width: 1px;
   border-style: solid;
   transition: 0.3s ease-in-out 0s;
@@ -34,68 +39,50 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
     stroke: currentColor;
   }
 
-  /* ${({ size }) =>
-    size === ('xs' || 's' || 'm') &&
-    css`
-      font-size: ${typography.textSmBold.size};
-      line-height: ${typography.textSmBold.height};
-      letter-spacing: ${typography.textSmBold.spacing};
-      font-weight: ${typography.textSmBold.weight};
-    `};
-
-  ${({ size }) =>
-    size === ('l' || 'xl') &&
-    css`
-      font-size: ${typography.textLgBold.size};
-      line-height: ${typography.textLgBold.height};
-      letter-spacing: ${typography.textLgBold.spacing};
-      font-weight: ${typography.textLgBold.weight};
-    `}; */
-
-  ${({ size }) =>
+  ${({ size, text }) =>
     size === 'xs' &&
     css`
-      padding: 7px 13px;
+      padding: ${text ? '7px 13px' : '7px'};
       font-size: ${typography.textSmBold.size};
       line-height: ${typography.textSmBold.height};
       letter-spacing: ${typography.textSmBold.spacing};
       font-weight: ${typography.textSmBold.weight};
     `};
 
-  ${({ size }) =>
+  ${({ size, text }) =>
     size === 's' &&
     css`
-      padding: 9px 15px;
+      padding: ${text ? '9px 15px' : '9px'};
       font-size: ${typography.textSmBold.size};
       line-height: ${typography.textSmBold.height};
       letter-spacing: ${typography.textSmBold.spacing};
       font-weight: ${typography.textSmBold.weight};
     `};
 
-  ${({ size }) =>
+  ${({ size, text }) =>
     size === 'm' &&
     css`
-      padding: 9px 17px;
+      padding: ${text ? '9px 17px' : '11px'};
       font-size: ${typography.textSmBold.size};
       line-height: ${typography.textSmBold.height};
       letter-spacing: ${typography.textSmBold.spacing};
       font-weight: ${typography.textSmBold.weight};
     `};
 
-  ${({ size }) =>
+  ${({ size, text }) =>
     size === 'l' &&
     css`
-      padding: 11px 19px;
+      padding: ${text ? '11px 19px' : '13px'};
       font-size: ${typography.textLgBold.size};
       line-height: ${typography.textLgBold.height};
       letter-spacing: ${typography.textLgBold.spacing};
       font-weight: ${typography.textLgBold.weight};
     `};
 
-  ${({ size }) =>
+  ${({ size, text }) =>
     size === 'xl' &&
     css`
-      padding: 15px 27px;
+      padding: ${text ? '15px 27px' : '15px'};
       font-size: ${typography.textLgBold.size};
       line-height: ${typography.textLgBold.height};
       letter-spacing: ${typography.textLgBold.spacing};
@@ -127,7 +114,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
     variant === 'secondary' &&
     css`
       border-color: ${disabled ? checkColor('gray50') : checkColor('gray100')};
-      background-color: checkColor('white');
+      background-color: ${checkColor('white')};
       color: ${disabled ? checkColor('gray500') : checkColor('gray900')};
 
       :hover {
@@ -204,6 +191,46 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
         border-bottom: 1px solid ${checkColor('orange500')};
       }
     `};
+
+  ${({ variant, disabled }) =>
+    variant === 'destructive' &&
+    css`
+      border-color: ${disabled ? checkColor('red100') : checkColor('red500')};
+      background-color: ${disabled
+        ? checkColor('red100')
+        : checkColor('red500')};
+      color: ${checkColor('white')};
+
+      :hover {
+        border-color: ${checkColor('red600')};
+        background-color: ${checkColor('red600')};
+      }
+
+      :is(:active, :focus) {
+        box-shadow: 0px 0px 0px 3px #ffa499;
+      }
+    `};
+
+  ${({ variant, disabled }) =>
+    variant === 'success' &&
+    css`
+      border-color: ${disabled
+        ? checkColor('green100')
+        : checkColor('green500')};
+      background-color: ${disabled
+        ? checkColor('green100')
+        : checkColor('green500')};
+      color: ${checkColor('white')};
+
+      :hover {
+        border-color: ${checkColor('green600')};
+        background-color: ${checkColor('green600')};
+      }
+
+      :is(:active, :focus) {
+        box-shadow: 0px 0px 0px 3px #b7e6c1;
+      }
+    `};
 `;
 
 type ButtonProps = {
@@ -211,9 +238,10 @@ type ButtonProps = {
   size?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  text?: string;
+  text?: string | boolean;
   icon?: string;
-  iconFirst?: boolean;
+  iconPosition?: string | boolean;
+  border?: string;
 };
 
 const handleClick = (): unknown => {
@@ -226,7 +254,8 @@ const Button = ({
   disabled,
   text,
   icon,
-  iconFirst,
+  iconPosition,
+  border,
 }: ButtonProps): JSX.Element => {
   return (
     <ButtonWrapper
@@ -234,12 +263,49 @@ const Button = ({
       variant={variant}
       size={size}
       disabled={disabled}
+      border={border}
       onClick={handleClick}
-      iconFirst={iconFirst}
     >
+      {!icon &&
+      (variant == 'destructive' || variant == 'success') &&
+      (!iconPosition || iconPosition == 'left') ? (
+        <Icon
+          name={variant == 'destructive' ? 'trash' : 'check-circle-broken'}
+        />
+      ) : icon &&
+        (variant == 'destructive' || variant == 'success') &&
+        (!iconPosition || iconPosition == 'left') ? (
+        <Icon name={icon} />
+      ) : icon && iconPosition == 'left' ? (
+        <Icon name={icon} />
+      ) : (
+        ''
+      )}
+
       {text && <span>{text}</span>}
 
-      {icon && <Icon name={icon} />}
+      {!icon &&
+      (variant == 'destructive' || variant == 'success') &&
+      iconPosition == 'right' ? (
+        <Icon
+          name={variant == 'destructive' ? 'trash' : 'check-circle-broken'}
+        />
+      ) : icon &&
+        (variant == 'destructive' || variant == 'success') &&
+        iconPosition == 'right' ? (
+        <Icon name={icon} />
+      ) : icon &&
+        ((!iconPosition && variant != 'destructive' && variant != 'success') ||
+          iconPosition == 'right') ? (
+        <Icon name={icon} />
+      ) : (icon || !icon) &&
+        !text &&
+        variant != 'destructive' &&
+        variant != 'success' ? (
+        <Icon name={icon ? icon : 'circle'} />
+      ) : (
+        ''
+      )}
     </ButtonWrapper>
   );
 };
