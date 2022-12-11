@@ -4,7 +4,7 @@ import '../src/styles/index.css';
 import App from './App';
 import reportWebVitals from './tests/reportWebVitals';
 import { ThemeProvider } from 'styled-components';
-import { DarkTheme, LightTheme } from './styles/theme';
+import { eDigital } from './styles/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +14,7 @@ const isDarkTheme = false;
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
+    <ThemeProvider theme={isDarkTheme ? eDigital.dark : eDigital.light}>
       <App />
     </ThemeProvider>
   </React.StrictMode>

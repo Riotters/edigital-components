@@ -1,11 +1,17 @@
 import React from 'react';
+import { ReactComponent as Circle } from '../../assets/svg/circle.svg';
+import { ReactComponent as Eye } from '../../assets/svg/eye.svg';
 
 type IconProps = {
-  src?: any;
+  name?: string;
 };
 
-function Icon({ src }: IconProps): JSX.Element {
-  return <img src={require(src)} alt="Icon" />;
-}
+const Icon = ({ name }: IconProps): JSX.Element => {
+  return (
+    <>
+      {name == 'circle' ? <Circle></Circle> : name == 'eye' ? <Eye></Eye> : ''}
+    </>
+  );
+};
 
 export default Icon;

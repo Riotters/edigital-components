@@ -1,7 +1,6 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { checkColor, checkShadow } from '../../utils/functions';
-import { color } from '../../utils/colors';
 import { typography } from '../../utils/typography';
 import Icon from './Icon';
 
@@ -9,10 +8,12 @@ export interface ButtonWrapperProps {
   size?: string;
   variant?: string;
   disabled?: boolean;
+  iconFirst?: boolean;
 }
 
 const ButtonWrapper = styled.button<ButtonWrapperProps>`
   display: inline-flex;
+  flex-direction: ${(props) => (props.iconFirst ? 'row-reverse' : 'row')};
   justify-content: center;
   align-items: center;
   text-decoration: none;
@@ -29,18 +30,8 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
   pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 
-  svg {
-    transition: 0.3s ease-in-out 0s;
-  }
-
   svg path {
     stroke: currentColor;
-  }
-
-  :hover {
-    svg {
-      transform: rotate(160deg);
-    }
   }
 
   /* ${({ size }) =>
@@ -216,13 +207,13 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 `;
 
 type ButtonProps = {
-  children?: any;
   variant?: string;
   size?: string;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   text?: string;
-  icon?: any;
+  icon?: string;
+  iconFirst?: boolean;
 };
 
 const handleClick = (): unknown => {
@@ -230,12 +221,12 @@ const handleClick = (): unknown => {
 };
 
 const Button = ({
-  children,
   variant,
   size,
   disabled,
   text,
   icon,
+  iconFirst,
 }: ButtonProps): JSX.Element => {
   return (
     <ButtonWrapper
@@ -244,10 +235,11 @@ const Button = ({
       size={size}
       disabled={disabled}
       onClick={handleClick}
+      iconFirst={iconFirst}
     >
       {text && <span>{text}</span>}
-      {children}
-      <Icon src={icon} />
+
+      {icon && <Icon name={icon} />}
     </ButtonWrapper>
   );
 };

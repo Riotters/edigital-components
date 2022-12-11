@@ -5,8 +5,14 @@ import Button from './components/atoms/Button';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Button text="Primary" variant="primary" size="xs"></Button>
-      <Button text="Secondary" variant="secondary" size="s"></Button>
+      <Button icon="circle" text="Primary" variant="primary" size="xs"></Button>
+      <Button
+        iconFirst
+        icon="eye"
+        text="Secondary"
+        variant="secondary"
+        size="s"
+      ></Button>
       <Button
         text="Secondary Color"
         variant="secondary-color"
