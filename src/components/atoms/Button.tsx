@@ -265,6 +265,7 @@ const Button = ({
       disabled={disabled}
       border={border}
       onClick={handleClick}
+      text={text}
     >
       {!icon &&
       (variant == 'destructive' || variant == 'success') &&
