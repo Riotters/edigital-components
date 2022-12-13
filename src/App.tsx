@@ -37,7 +37,7 @@ const App: React.FC = () => {
           variant="primary"
           size="xs"
         ></Button>
-        <Button border="small" icon="eye" variant="secondary" size="s"></Button>
+        <Button border="small" variant="secondary" size="s"></Button>
         <Button variant="secondary-color" size="m"></Button>
         <Button variant="tertiary" size="l"></Button>
         <Button variant="link" size="xl"></Button>
