@@ -4,7 +4,7 @@ import { checkColor, checkShadow } from '../../utils/functions';
 import { typography } from '../../utils/typography';
 import Icon from './Icon';
 
-export interface ButtonWrapperProps {
+interface ButtonWrapperProps {
   size?: string;
   variant?: string;
   disabled?: boolean;
@@ -20,7 +20,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   gap: 10px;
   border-radius: ${(props) =>
     props.border == 'normal'
-      ? '8px'
+      ? '64px'
       : props.border == 'small'
       ? '8px'
       : '64px'};
@@ -28,6 +28,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   border-style: solid;
   transition: 0.3s ease-in-out 0s;
   cursor: pointer;
+  font-weight: ${typography.weight.bold};
 
   :focus-visible {
     outline: none;
@@ -43,50 +44,45 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
     size === 'xs' &&
     css`
       padding: ${text ? '7px 13px' : '7px'};
-      font-size: ${typography.textSmBold.size};
-      line-height: ${typography.textSmBold.height};
-      letter-spacing: ${typography.textSmBold.spacing};
-      font-weight: ${typography.textSmBold.weight};
+      font-size: ${typography.textSm.size};
+      line-height: ${typography.textSm.height};
+      letter-spacing: ${typography.textSm.spacing};
     `};
 
   ${({ size, text }) =>
     size === 's' &&
     css`
       padding: ${text ? '9px 15px' : '9px'};
-      font-size: ${typography.textSmBold.size};
-      line-height: ${typography.textSmBold.height};
-      letter-spacing: ${typography.textSmBold.spacing};
-      font-weight: ${typography.textSmBold.weight};
+      font-size: ${typography.textSm.size};
+      line-height: ${typography.textSm.height};
+      letter-spacing: ${typography.textSm.spacing};
     `};
 
   ${({ size, text }) =>
     size === 'm' &&
     css`
       padding: ${text ? '9px 17px' : '11px'};
-      font-size: ${typography.textSmBold.size};
-      line-height: ${typography.textSmBold.height};
-      letter-spacing: ${typography.textSmBold.spacing};
-      font-weight: ${typography.textSmBold.weight};
+      font-size: ${typography.textSm.size};
+      line-height: ${typography.textSm.height};
+      letter-spacing: ${typography.textSm.spacing};
     `};
 
   ${({ size, text }) =>
     size === 'l' &&
     css`
       padding: ${text ? '11px 19px' : '13px'};
-      font-size: ${typography.textLgBold.size};
-      line-height: ${typography.textLgBold.height};
-      letter-spacing: ${typography.textLgBold.spacing};
-      font-weight: ${typography.textLgBold.weight};
+      font-size: ${typography.textLg.size};
+      line-height: ${typography.textLg.height};
+      letter-spacing: ${typography.textLg.spacing};
     `};
 
   ${({ size, text }) =>
     size === 'xl' &&
     css`
       padding: ${text ? '15px 27px' : '15px'};
-      font-size: ${typography.textLgBold.size};
-      line-height: ${typography.textLgBold.height};
-      letter-spacing: ${typography.textLgBold.spacing};
-      font-weight: ${typography.textLgBold.weight};
+      font-size: ${typography.textLg.size};
+      line-height: ${typography.textLg.height};
+      letter-spacing: ${typography.textLg.spacing};
     `};
 
   ${({ variant, disabled }) =>
@@ -309,6 +305,13 @@ const Button = ({
       )}
     </ButtonWrapper>
   );
+};
+
+Button.defaultProps = {
+  variant: 'primary',
+  border: 'normal',
+  size: 'm',
+  icon: 'circle',
 };
 
 export default Button;

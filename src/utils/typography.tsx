@@ -1,296 +1,86 @@
 interface TypographyTypes {
   [key: string]: {
-    [key: string]: string;
+    [key: string]: string | number;
   };
 }
 
 export const typography: TypographyTypes = {
-  display2xlRegular: {
+  weight: {
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+  },
+  display2xl: {
     size: '64px',
     height: '80px',
     weight: '400',
     spacing: '-1.2px',
   },
-  display2xlMedium: {
-    size: '64px',
-    height: '80px',
-    weight: '500',
-    spacing: '-1.2px',
-  },
-  display2xlSemibold: {
-    size: '64px',
-    height: '80px',
-    weight: '600',
-    spacing: '-1.2px',
-  },
-  display2xlBold: {
-    size: '64px',
-    height: '80px',
-    weight: '700',
-    spacing: '-1.2px',
-  },
-  displayXlRegular: {
+  displayXl: {
     size: '56px',
     height: '72px',
     weight: '400',
     spacing: '-0.5px',
   },
-  displayXlMedium: {
-    size: '56px',
-    height: '72px',
-    weight: '500',
-    spacing: '-0.5px',
-  },
-  displayXlSemibold: {
-    size: '56px',
-    height: '72px',
-    weight: '600',
-    spacing: '-0.5px',
-  },
-  displayXlBold: {
-    size: '56px',
-    height: '72px',
-    weight: '700',
-    spacing: '-0.5px',
-  },
-  displayLgRegular: {
+  displayLg: {
     size: '48px',
     height: '56px',
     weight: '400',
     spacing: '-0.5px',
   },
-  displayLgMedium: {
-    size: '48px',
-    height: '56px',
-    weight: '500',
-    spacing: '-0.5px',
-  },
-  displayLgSemibold: {
-    size: '48px',
-    height: '56px',
-    weight: '600',
-    spacing: '-0.5px',
-  },
-  displayLgBold: {
-    size: '48px',
-    height: '56px',
-    weight: '700',
-    spacing: '-0.5px',
-  },
-  displayMdRegular: {
+  displayMd: {
     size: '40px',
     height: '48px',
     weight: '400',
     spacing: '-0.5px',
   },
-  displayMdMedium: {
-    size: '40px',
-    height: '48px',
-    weight: '500',
-    spacing: '-0.5px',
-  },
-  displayMdSemibold: {
-    size: '40px',
-    height: '48px',
-    weight: '600',
-    spacing: '-0.5px',
-  },
-  displayMdBold: {
-    size: '40px',
-    height: '48px',
-    weight: '700',
-    spacing: '-0.5px',
-  },
-  displaySmRegular: {
+  displaySm: {
     size: '32px',
     height: '40px',
     weight: '400',
     spacing: '-0.3px',
   },
-  displaySmMedium: {
-    size: '32px',
-    height: '40px',
-    weight: '500',
-    spacing: '-0.3px',
-  },
-  displaySmSemibold: {
-    size: '32px',
-    height: '40px',
-    weight: '600',
-    spacing: '-0.3px',
-  },
-  displaySmBold: {
-    size: '32px',
-    height: '40px',
-    weight: '700',
-    spacing: '-0.3px',
-  },
-  displayXsRegular: {
+  displayXs: {
     size: '24px',
     height: '32px',
     weight: '400',
     spacing: '-0.5px',
   },
-  displayXsMedium: {
-    size: '24px',
-    height: '32px',
-    weight: '500',
-    spacing: '-0.5px',
-  },
-  displayXsSemibold: {
-    size: '24px',
-    height: '32px',
-    weight: '600',
-    spacing: '-0.5px',
-  },
-  displayXsBold: {
-    size: '24px',
-    height: '32px',
-    weight: '700',
-    spacing: '-0.5px',
-  },
-  text2xlRegular: {
+  text2xl: {
     size: '20px',
     height: '32px',
     weight: '400',
     spacing: '-0.1px',
   },
-  text2xlMedium: {
-    size: '20px',
-    height: '32px',
-    weight: '500',
-    spacing: '-0.1px',
-  },
-  text2xlSemibold: {
-    size: '20px',
-    height: '32px',
-    weight: '600',
-    spacing: '-0.1px',
-  },
-  text2xlBold: {
-    size: '20px',
-    height: '32px',
-    weight: '700',
-    spacing: '-0.1px',
-  },
-  textXlRegular: {
+  textXl: {
     size: '18px',
     height: '28px',
     weight: '400',
     spacing: '-0.1px',
   },
-  textXlMedium: {
-    size: '18px',
-    height: '28px',
-    weight: '500',
-    spacing: '-0.1px',
-  },
-  textXlSemibold: {
-    size: '18px',
-    height: '28px',
-    weight: '600',
-    spacing: '-0.1px',
-  },
-  textXlBold: {
-    size: '18px',
-    height: '28px',
-    weight: '700',
-    spacing: '-0.1px',
-  },
-  textLgRegular: {
+  textLg: {
     size: '16px',
     height: '24px',
     weight: '400',
     spacing: '-0.1px',
   },
-  textLgMedium: {
-    size: '16px',
-    height: '24px',
-    weight: '500',
-    spacing: '-0.1px',
-  },
-  textLgSemibold: {
-    size: '16px',
-    height: '24px',
-    weight: '600',
-    spacing: '-0.1px',
-  },
-  textLgBold: {
-    size: '16px',
-    height: '24px',
-    weight: '700',
-    spacing: '-0.1px',
-  },
-  textMdRegular: {
+  textMd: {
     size: '15px',
     height: '24px',
     weight: '400',
     spacing: '-0.2px',
   },
-  textMdMedium: {
-    size: '15px',
-    height: '24px',
-    weight: '500',
-    spacing: '-0.2px',
-  },
-  textMdSemibold: {
-    size: '15px',
-    height: '24px',
-    weight: '600',
-    spacing: '-0.2px',
-  },
-  textMdBold: {
-    size: '15px',
-    height: '24px',
-    weight: '700',
-    spacing: '-0.2px',
-  },
-  textSmRegular: {
+  textSm: {
     size: '14px',
     height: '24px',
     weight: '400',
     spacing: '-0.2px',
   },
-  textSmMedium: {
-    size: '14px',
-    height: '24px',
-    weight: '500',
-    spacing: '-0.2px',
-  },
-  textSmSemibold: {
-    size: '14px',
-    height: '24px',
-    weight: '600',
-    spacing: '-0.2px',
-  },
-  textSmBold: {
-    size: '14px',
-    height: '24px',
-    weight: '700',
-    spacing: '-0.2px',
-  },
-  textXsRegular: {
+  textXs: {
     size: '12px',
     height: '20px',
     weight: '400',
-    spacing: '-0.2px',
-  },
-  textXsMedium: {
-    size: '12px',
-    height: '20px',
-    weight: '500',
-    spacing: '-0.2px',
-  },
-  textXsSemibold: {
-    size: '12px',
-    height: '20px',
-    weight: '600',
-    spacing: '-0.2px',
-  },
-  textXsBold: {
-    size: '12px',
-    height: '20px',
-    weight: '700',
     spacing: '-0.2px',
   },
 };
