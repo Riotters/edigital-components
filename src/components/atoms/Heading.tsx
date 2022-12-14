@@ -105,7 +105,7 @@ const Heading = ({
     </HeadingWrapper>
   );
 };
-
+// 
 Heading.defaultProps = {
   children: 'Heading',
   size: 1,
