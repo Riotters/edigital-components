@@ -26,4 +26,6 @@ const Icon = ({ name }: IconProps): JSX.Element => {
   );
 };
 
+Icon.defaultProps = {};
+
 export default Icon;

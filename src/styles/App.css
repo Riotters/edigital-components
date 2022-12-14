@@ -1,1 +1,11 @@
+body {
+  padding: 80px;
+}
 
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 64px 0;
+}
