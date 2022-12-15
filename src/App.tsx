@@ -1,11 +1,12 @@
 import React from 'react';
 import '../src/styles/App.css';
+import Avatar from './components/atoms/Avatar';
 import Button from './components/atoms/Button';
 import Heading from './components/atoms/Heading';
 import Icon from './components/atoms/Icon';
-import IconTest from './components/atoms/icontest';
 import Image from './components/atoms/Image';
 import Paragraph from './components/atoms/Paragraph';
+import AvatarGroup from './components/molecules/AvatarGroup';
 
 const App: React.FC = () => {
   return (
@@ -116,7 +117,10 @@ const App: React.FC = () => {
       <div className="preview">
         <Image />
         <Icon name="eye" />
-        <IconTest />
+      </div>
+      <div className="preview">
+        <Avatar />
+        <AvatarGroup />
       </div>
     </div>
   );
