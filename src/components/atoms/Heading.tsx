@@ -72,13 +72,13 @@ type HeadingProps = {
   color?: string;
 };
 
-const Heading = ({
+const Heading: React.FC<HeadingProps> = ({
   children,
   text,
   size,
   weight,
   color,
-}: HeadingProps): JSX.Element => {
+}) => {
   return (
     <HeadingWrapper
       className="heading"
