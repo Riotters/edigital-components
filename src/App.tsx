@@ -2,6 +2,9 @@ import React from 'react';
 import '../src/styles/App.css';
 import Button from './components/atoms/Button';
 import Heading from './components/atoms/Heading';
+import Icon from './components/atoms/Icon';
+import IconTest from './components/atoms/icontest';
+import Image from './components/atoms/Image';
 import Paragraph from './components/atoms/Paragraph';
 
 const App: React.FC = () => {
@@ -109,6 +112,11 @@ const App: React.FC = () => {
         <Paragraph size={4}></Paragraph>
         <Paragraph size={5}></Paragraph>
         <Paragraph size={6}></Paragraph>
+      </div>
+      <div className="preview">
+        <Image />
+        <Icon name="eye" />
+        <IconTest />
       </div>
     </div>
   );

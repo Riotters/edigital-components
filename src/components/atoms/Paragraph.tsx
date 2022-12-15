@@ -72,13 +72,13 @@ type ParagraphProps = {
   color?: string;
 };
 
-const Paragraph = ({
+const Paragraph: React.FC<ParagraphProps> = ({
   children,
   text,
   size,
   weight,
   color,
-}: ParagraphProps): JSX.Element => {
+}) => {
   return (
     <ParagraphWrapper
       className="paragraph"

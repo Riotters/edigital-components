@@ -244,7 +244,7 @@ const handleClick = (): unknown => {
   return console.log('This is working!');
 };
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   variant,
   size,
   disabled,
@@ -252,7 +252,7 @@ const Button = ({
   icon,
   iconPosition,
   border,
-}: ButtonProps): JSX.Element => {
+}) => {
   return (
     <ButtonWrapper
       className="button"

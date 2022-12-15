@@ -11,7 +11,7 @@ type AvatarProps = {
   size?: string;
 };
 
-const Avatar = ({ size }: AvatarProps): JSX.Element => {
+const Avatar: React.FC<AvatarProps> = ({ size }) => {
   return <AvatarWrapper size={size}></AvatarWrapper>;
 };
 

@@ -5,15 +5,15 @@ interface BoxWrapperProps {
   display?: string;
 }
 
-const ButtonWrapper = styled.button<BoxWrapperProps>``;
+const BoxWrapper = styled.button<BoxWrapperProps>``;
 
 type BoxProps = {
   children?: JSX.Element | string | number;
   display?: string;
 };
 
-const Box = ({ children, display }: BoxProps): JSX.Element => {
-  return <ButtonWrapper display={display}>{children}</ButtonWrapper>;
+const Box: React.FC<BoxProps> = ({ children, display }) => {
+  return <BoxWrapper display={display}>{children}</BoxWrapper>;
 };
 
 Box.defaultProps = {};
