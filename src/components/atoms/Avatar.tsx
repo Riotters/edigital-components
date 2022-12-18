@@ -7,7 +7,7 @@ import Image from './Image';
 import Badge from './Badge';
 
 interface AvatarWrapperProps {
-  size?: string;
+  size?: number;
   color?: string;
 }
 
@@ -17,8 +17,9 @@ const AvatarWrapper = styled.div<AvatarWrapperProps>`
   justify-content: center;
   align-items: center;
   border-radius: 256px;
-  background-color: ${(props) =>
-    props.color ? checkColor(props.color) : checkColor('orange25')};
+  background-color: ${(props) => props.color && checkColor(props.color)};
+  aspect-ratio: 1/1;
+  border: 2px solid ${checkColor('white')};
 
   .avatar {
     &__notification {
@@ -27,6 +28,55 @@ const AvatarWrapper = styled.div<AvatarWrapperProps>`
       right: 0;
     }
   }
+
+  ${({ size }) =>
+    size === 1 &&
+    css`
+      width: 160px;
+      height: 160px;
+    `};
+  ${({ size }) =>
+    size === 2 &&
+    css`
+      width: 120px;
+      height: 120px;
+    `};
+  ${({ size }) =>
+    size === 3 &&
+    css`
+      width: 80px;
+      height: 80px;
+    `};
+  ${({ size }) =>
+    size === 4 &&
+    css`
+      width: 64px;
+      height: 64px;
+    `};
+  ${({ size }) =>
+    size === 5 &&
+    css`
+      width: 48px;
+      height: 48px;
+    `};
+  ${({ size }) =>
+    size === 6 &&
+    css`
+      width: 32px;
+      height: 32px;
+    `};
+  ${({ size }) =>
+    size === 7 &&
+    css`
+      width: 24px;
+      height: 24px;
+    `};
+  ${({ size }) =>
+    size === 8 &&
+    css`
+      width: 16px;
+      height: 16px;
+    `};
 `;
 
 interface userProps {
@@ -36,13 +86,20 @@ interface userProps {
 }
 
 type AvatarProps = {
-  size?: string;
+  size?: number;
   user?: userProps;
   count?: string;
   color?: string;
+  isNotification?: boolean;
 };
 
-const Avatar: React.FC<AvatarProps> = ({ size, user, count, color }) => {
+const Avatar: React.FC<AvatarProps> = ({
+  size,
+  user,
+  count,
+  color,
+  isNotification,
+}) => {
   const getInitials = (firstName: string, lastName: string): string => {
     const initials =
       firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
@@ -54,7 +111,47 @@ const Avatar: React.FC<AvatarProps> = ({ size, user, count, color }) => {
       {user && user?.avatar ? (
         <Image name={user.avatar} />
       ) : user && user?.icon ? (
-        <Icon name={user.icon} />
+        <Icon
+          width={
+            size == 1
+              ? '96px'
+              : size == 2
+              ? '72px'
+              : size == 3
+              ? '48px'
+              : size == 4
+              ? '40px'
+              : size == 5
+              ? '32px'
+              : size == 6
+              ? '20px'
+              : size == 7
+              ? '12px'
+              : size == 8
+              ? '8px'
+              : '32px'
+          }
+          height={
+            size == 1
+              ? '96px'
+              : size == 2
+              ? '72px'
+              : size == 3
+              ? '48px'
+              : size == 4
+              ? '40px'
+              : size == 5
+              ? '32px'
+              : size == 6
+              ? '20px'
+              : size == 7
+              ? '12px'
+              : size == 8
+              ? '8px'
+              : '32px'
+          }
+          name={user.icon}
+        />
       ) : user && user?.name ? (
         <Heading
           text={getInitials(user?.name.firstName, user?.name.lastName)}
@@ -63,11 +160,21 @@ const Avatar: React.FC<AvatarProps> = ({ size, user, count, color }) => {
       ) : (
         <Heading text={count ? count : '??'} weight="medium" />
       )}
-      <Badge className="avatar__notification" />
+      {isNotification && (
+        <Badge
+          text=""
+          variant="primary"
+          badgeSize={size}
+          className="avatar__notification"
+        />
+      )}
     </AvatarWrapper>
   );
 };
 
-Avatar.defaultProps = {};
+Avatar.defaultProps = {
+  size: 5,
+  color: 'orange25',
+};
 
 export default Avatar;

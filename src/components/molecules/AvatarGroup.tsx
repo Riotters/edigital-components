@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import Avatar from '../atoms/Avatar';
 
 interface AvatarGroupWrapperProps {
-  size?: string;
+  size?: number;
 }
 
-const AvatarGroupWrapper = styled.div<AvatarGroupWrapperProps>``;
+const AvatarGroupWrapper = styled.div<AvatarGroupWrapperProps>`
+  display: flex;
+`;
 
 interface usersListProps {
   [key: string]: string | any;
@@ -15,19 +17,31 @@ interface usersListProps {
 }
 
 type AvatarGroupProps = {
-  size?: string;
+  size?: number;
   usersData?: usersListProps[];
 };
 
 const AvatarGroup: React.FC<AvatarGroupProps> = ({ size, usersData }) => {
   return (
-    <AvatarGroupWrapper size={size}>
+    <AvatarGroupWrapper>
       {usersData?.slice(0, 6).map((userData, index: number) => {
         if (index <= 4) {
-          return <Avatar key={index} user={userData} />;
+          return (
+            <Avatar
+              size={size == 1 ? 5 : size == 2 ? 6 : size == 3 ? 7 : 5}
+              key={index}
+              user={userData}
+            />
+          );
         }
         if (index >= 5) {
-          return <Avatar key={index} count={`+${usersData.length - index}`} />;
+          return (
+            <Avatar
+              size={size == 1 ? 5 : size == 2 ? 6 : size == 3 ? 7 : 5}
+              key={index}
+              count={`+${usersData.length - index}`}
+            />
+          );
         }
       })}
     </AvatarGroupWrapper>
@@ -35,14 +49,14 @@ const AvatarGroup: React.FC<AvatarGroupProps> = ({ size, usersData }) => {
 };
 
 AvatarGroup.defaultProps = {
+  size: 1,
   usersData: [
     {
       name: {
         firstName: 'Roberto',
         lastName: 'Babiaggio',
       },
-      icon: 'trash-03',
-      avatar: 'placeholder',
+      icon: 'user-03',
       color: 'orange600',
     },
     {

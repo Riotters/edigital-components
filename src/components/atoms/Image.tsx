@@ -6,7 +6,8 @@ interface ImageWrapperProps {
 }
 
 const ImageWrapper = styled.div<ImageWrapperProps>`
-  width: ${(props) => (props.size ? props.size : '64px')};
+  width: 100%;
+  max-width: ${(props) => props.size && props.size};
 `;
 
 type ImageProps = {
@@ -51,7 +52,6 @@ const Image: React.FC<ImageProps> = ({ size, name, alt }) => {
 };
 
 Image.defaultProps = {
-  size: '80px',
   name: 'placeholder',
   alt: 'This is a placeholder.',
 };

@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import React from 'react';
 import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
@@ -15,9 +14,9 @@ const IconWrapper = styled.div<IconWrapperProps>`
   height: ${(props) => props.height && props.height};
 
   svg {
-    width: ${(props) => props.width && props.width};
+    width: 100%;
     max-width: unset;
-    height: ${(props) => props.height && props.height};
+    height: 100%;
   }
 
   svg path {
@@ -50,6 +49,8 @@ const Icon: React.FC<IconProps> = ({
 
 Icon.defaultProps = {
   name: 'circle',
+  width: '24px',
+  height: '24px',
   stroke: 'currentColor',
 };
 
