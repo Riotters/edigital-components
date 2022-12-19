@@ -95,6 +95,8 @@ const Heading: React.FC<HeadingProps> = ({
           ? 'h5'
           : size == 6
           ? 'h6'
+          : size == 0
+          ? 'p'
           : 'h1'
       }
       size={size}

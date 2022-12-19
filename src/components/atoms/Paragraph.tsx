@@ -9,7 +9,7 @@ interface ParagraphWrapperProps {
   color?: string;
 }
 
-const ParagraphWrapper = styled.h1<ParagraphWrapperProps>`
+const ParagraphWrapper = styled.p<ParagraphWrapperProps>`
   font-weight: ${(props) =>
     props.weight ? typography.weight[props.weight] : 700};
   color: ${(props) =>
@@ -65,8 +65,8 @@ const ParagraphWrapper = styled.h1<ParagraphWrapperProps>`
 `;
 
 type ParagraphProps = {
-  children?: string;
-  text?: string;
+  children?: string | number;
+  text?: string | number;
   size?: number;
   weight?: string;
   color?: string;

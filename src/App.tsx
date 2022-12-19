@@ -1,11 +1,13 @@
 import React from 'react';
 import '../src/styles/App.css';
+import Avatar from './components/atoms/Avatar';
+import Badge from './components/atoms/Badge';
 import Button from './components/atoms/Button';
 import Heading from './components/atoms/Heading';
 import Icon from './components/atoms/Icon';
-import IconTest from './components/atoms/icontest';
 import Image from './components/atoms/Image';
 import Paragraph from './components/atoms/Paragraph';
+import AvatarGroup from './components/molecules/AvatarGroup';
 
 const App: React.FC = () => {
   return (
@@ -116,7 +118,34 @@ const App: React.FC = () => {
       <div className="preview">
         <Image />
         <Icon name="eye" />
-        <IconTest />
+      </div>
+      <div className="preview">
+        <Avatar size={1} isNotification={true} />
+        <Avatar
+          user={{ avatar: 'placeholder' }}
+          size={1}
+          isNotification={true}
+        />
+        <Avatar user={{ icon: 'user-03' }} size={1} isNotification={true} />
+      </div>
+      <div className="preview">
+        <AvatarGroup />
+      </div>
+      <div className="preview">
+        <Badge variant="default" />
+        <Badge variant="primary" />
+        <Badge variant="secondary" />
+        <Badge variant="important" />
+        <Badge variant="added" />
+        <Badge variant="removed" />
+      </div>
+      <div className="preview">
+        <Badge textSize={2} variant="default" />
+        <Badge textSize={2} variant="primary" />
+        <Badge textSize={2} variant="secondary" />
+        <Badge textSize={2} variant="important" />
+        <Badge textSize={2} variant="added" />
+        <Badge textSize={2} variant="removed" />
       </div>
     </div>
   );
