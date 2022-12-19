@@ -2,21 +2,28 @@ import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 interface ImageWrapperProps {
+  height?: string;
   size?: string;
 }
 
 const ImageWrapper = styled.div<ImageWrapperProps>`
+  height: ${(props) => props.height ?? 'auto'};
   width: 100%;
-  max-width: ${(props) => props.size && props.size};
+  max-width: ${(props) => props.size ?? '160px'};
+
+  img {
+    width: 100%;
+  }
 `;
 
 type ImageProps = {
+  height?: string;
   size?: string;
   name?: string;
   alt?: string;
 };
 
-const Image: React.FC<ImageProps> = ({ size, name, alt }) => {
+const Image: React.FC<ImageProps> = ({ height, size, name, alt }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
@@ -43,7 +50,7 @@ const Image: React.FC<ImageProps> = ({ size, name, alt }) => {
       ) : error ? (
         'Error while loading.'
       ) : (
-        <ImageWrapper size={size}>
+        <ImageWrapper height={height} size={size}>
           <img src={`${image}`} alt={alt} />
         </ImageWrapper>
       )}

@@ -16,7 +16,7 @@ const AvatarWrapper = styled.div<AvatarWrapperProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 256px;
+  border-radius: 50%;
   background-color: ${(props) => props.color && checkColor(props.color)};
   aspect-ratio: 1/1;
   border: 2px solid ${checkColor('white')};
@@ -109,7 +109,7 @@ const Avatar: React.FC<AvatarProps> = ({
   return (
     <AvatarWrapper className="avatar" size={size} color={color || user?.color}>
       {user && user?.avatar ? (
-        <Image name={user.avatar} />
+        <Image name={user.avatar} height="100%" />
       ) : user && user?.icon ? (
         <Icon
           width={

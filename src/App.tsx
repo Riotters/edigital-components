@@ -127,6 +127,7 @@ const App: React.FC = () => {
           isNotification={true}
         />
         <Avatar user={{ icon: 'user-03' }} size={1} isNotification={true} />
+        <Avatar user={{ icon: 'user-03' }} size={3} isNotification={true} />
       </div>
       <div className="preview">
         <AvatarGroup />

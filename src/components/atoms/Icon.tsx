@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
+import IconEye from '../../assets/svg/eye.svg';
 
 interface IconWrapperProps {
   width?: string;
@@ -42,7 +43,7 @@ const Icon: React.FC<IconProps> = ({
 }: IconProps) => {
   return (
     <IconWrapper width={width} height={height} fill={fill} stroke={stroke}>
-      <ReactSVG src={`/assets/svg/${name}.svg`} />
+      <ReactSVG src={IconEye} />
     </IconWrapper>
   );
 };
