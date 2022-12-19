@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkedigital_components=self.webpackChunkedigital_components||[]).push([[279],{"./src/assets/img/placeholder.png":function(module,__unused_webpack_exports,__webpack_require__){module.exports=__webpack_require__.p+"5fcae030d2cdfafe11c3.png"}}]);
