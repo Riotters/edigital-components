@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
-import IconEye from '../../assets/svg/eye.svg';
+import IconEye from '../../assets/svg/circle.svg';
 
 interface IconWrapperProps {
   width?: string;

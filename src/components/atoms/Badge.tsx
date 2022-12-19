@@ -11,6 +11,7 @@ interface BadgeWrapperProps {
 }
 
 const BadgeWrapper = styled.span<BadgeWrapperProps>`
+  display: block;
   border-width: 1px;
   border-style: solid;
   border-radius: 64px;

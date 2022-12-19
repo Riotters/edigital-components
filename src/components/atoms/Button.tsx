@@ -18,12 +18,7 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
   align-items: center;
   text-decoration: none;
   gap: 10px;
-  border-radius: ${(props) =>
-    props.border == 'normal'
-      ? '64px'
-      : props.border == 'small'
-      ? '8px'
-      : '64px'};
+  border-radius: ${(props) => (props.border === 'small' ? '8px' : '64px')};
   border-width: 1px;
   border-style: solid;
   transition: 0.3s ease-in-out 0s;
