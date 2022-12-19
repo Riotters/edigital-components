@@ -16,7 +16,7 @@ export default {
     },
     weight: {
       control: { type: 'select' },
-      options: { ...typography.weight },
+      options: Object.keys(typography.weight),
     },
     color: {
       control: { type: 'select' },
