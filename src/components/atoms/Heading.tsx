@@ -107,7 +107,7 @@ const Heading: React.FC<HeadingProps> = ({
     </HeadingWrapper>
   );
 };
-// 
+//
 Heading.defaultProps = {
   children: 'Heading',
   size: 1,

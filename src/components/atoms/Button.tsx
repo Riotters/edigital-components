@@ -267,7 +267,7 @@ const Button: React.FC<ButtonProps> = ({
       (variant == 'destructive' || variant == 'success') &&
       (!iconPosition || iconPosition == 'left') ? (
         <Icon
-          name={variant == 'destructive' ? 'trash' : 'check-circle-broken'}
+          name={variant == 'destructive' ? 'trash-03' : 'check-circle-broken'}
         />
       ) : icon &&
         (variant == 'destructive' || variant == 'success') &&
@@ -285,7 +285,7 @@ const Button: React.FC<ButtonProps> = ({
       (variant == 'destructive' || variant == 'success') &&
       iconPosition == 'right' ? (
         <Icon
-          name={variant == 'destructive' ? 'trash' : 'check-circle-broken'}
+          name={variant == 'destructive' ? 'trash-03' : 'check-circle-broken'}
         />
       ) : icon &&
         (variant == 'destructive' || variant == 'success') &&
