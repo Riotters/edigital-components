@@ -30,7 +30,7 @@ export default {
     },
     icon: {
       control: { type: 'select' },
-      options: ['circle', 'eye'],
+      options: ['circle', 'eye', 'plugin'],
     },
     text: { control: 'text' },
     iconPosition: {
