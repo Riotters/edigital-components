@@ -158,7 +158,7 @@ const Avatar: React.FC<AvatarProps> = ({
           weight="medium"
         />
       ) : (
-        <Heading text={count ? count : '??'} weight="medium" />
+        <Heading text={count ? count : '??'} weight="medium" size={size} />
       )}
       {isNotification && (
         <Badge

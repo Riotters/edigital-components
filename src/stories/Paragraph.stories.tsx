@@ -12,7 +12,7 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: [1, 2, 3, 4, 5, 6, 0],
+      options: [1, 2, 3, 4, 5, 6],
     },
     weight: {
       control: { type: 'select' },
