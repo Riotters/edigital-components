@@ -43,7 +43,7 @@ const Icon: React.FC<IconProps> = ({
 }: IconProps) => {
   return (
     <IconWrapper width={width} height={height} fill={fill} stroke={stroke}>
-      <ReactSVG src={IconEye} />
+      <ReactSVG src={`/static/media/${name}.svg`} />
     </IconWrapper>
   );
 };
