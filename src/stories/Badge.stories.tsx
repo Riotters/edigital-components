@@ -11,7 +11,7 @@ export default {
   argTypes: {
     badgeSize: {
       control: { type: 'select' },
-      options: [1, 2, 3, 4, 5, 6],
+      options: [0, 1, 2, 3, 4, 5, 6],
     },
     variant: {
       control: { type: 'select' },
