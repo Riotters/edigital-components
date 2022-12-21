@@ -1,7 +1,8 @@
 import React from 'react';
 import { ReactSVG } from 'react-svg';
 import styled from 'styled-components';
-import IconEye from '../../assets/svg/circle.svg';
+import IconCircle from '../../assets/svg/circle.svg';
+import IconEye from '../../assets/svg/eye.svg';
 
 interface IconWrapperProps {
   width?: string;
@@ -9,6 +10,19 @@ interface IconWrapperProps {
   fill?: string;
   stroke?: string;
 }
+
+// const getName = ({ name }: IconProps): any => {
+//   switch (name) {
+//     case 'eye':
+//       console.log(IconEye);
+//       return IconEye;
+//       break;
+//     default:
+//       console.log(IconCircle);
+//       return IconCircle;
+//       break;
+//   }
+// };
 
 const IconWrapper = styled.div<IconWrapperProps>`
   width: ${(props) => props.width && props.width};
@@ -34,16 +48,10 @@ type IconProps = {
   stroke?: string;
 };
 
-const Icon: React.FC<IconProps> = ({
-  name,
-  width,
-  height,
-  fill,
-  stroke,
-}: IconProps) => {
+const Icon: React.FC<IconProps> = ({ name, width, height, fill, stroke }) => {
   return (
     <IconWrapper width={width} height={height} fill={fill} stroke={stroke}>
-      <ReactSVG src={`/static/media/${name}.svg`} />
+      <ReactSVG src={name === 'eye' ? IconEye : IconCircle} />
     </IconWrapper>
   );
 };
