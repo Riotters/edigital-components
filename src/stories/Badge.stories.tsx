@@ -33,6 +33,6 @@ const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  badgeSize: 1,
+  badgeSize: 0,
   variant: 'default',
 };

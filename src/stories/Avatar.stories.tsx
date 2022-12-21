@@ -17,6 +17,14 @@ export default {
       control: { type: 'select' },
       options: { ...color },
     },
+    user: {
+      control: { type: 'select' },
+      options: {
+        none: {},
+        avatar: { avatar: 'placeholder' },
+        icon: { icon: 'eye' },
+      },
+    },
   },
 } as ComponentMeta<typeof Avatar>;
 

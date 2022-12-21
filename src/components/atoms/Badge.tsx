@@ -10,6 +10,27 @@ interface BadgeWrapperProps {
   variant?: string;
 }
 
+const borderWidth = ({ badgeSize }: BadgeWrapperProps): number => {
+  switch (badgeSize) {
+    case 2:
+      return 3.5;
+    case 3:
+      return 3;
+    case 4:
+      return 2.5;
+    case 5:
+      return 2;
+    case 6:
+      return 1.5;
+    case 7:
+      return 1;
+    case 8:
+      return 0.5;
+    default:
+      return 4;
+  }
+};
+
 const BadgeWrapper = styled.span<BadgeWrapperProps>`
   display: block;
   border-width: 1px;
@@ -29,7 +50,7 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
     !text &&
     badgeSize != 0 &&
     css`
-      border-width: 4px;
+      border-width: ${borderWidth}px;
       border-color: ${checkColor('white')} !important;
       width: ${badgeSize == 1
         ? '40px'
@@ -124,6 +145,7 @@ const Badge: React.FC<BadgeProps> = ({
   variant,
   text,
 }) => {
+  console.log(badgeSize);
   return (
     <BadgeWrapper badgeSize={badgeSize} variant={variant} className={className}>
       {text && (
