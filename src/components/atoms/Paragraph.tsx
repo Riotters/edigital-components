@@ -65,20 +65,13 @@ const ParagraphWrapper = styled.p<ParagraphWrapperProps>`
 `;
 
 type ParagraphProps = {
-  children?: string | number;
-  text?: string | number;
+  text?: string;
   size?: number;
   weight?: string;
   color?: string;
 };
 
-const Paragraph: React.FC<ParagraphProps> = ({
-  children,
-  text,
-  size,
-  weight,
-  color,
-}) => {
+const Paragraph: React.FC<ParagraphProps> = ({ text, size, weight, color }) => {
   return (
     <ParagraphWrapper
       className="paragraph"
@@ -86,13 +79,13 @@ const Paragraph: React.FC<ParagraphProps> = ({
       weight={weight}
       color={color}
     >
-      {children && !text ? children : text}
+      {text}
     </ParagraphWrapper>
   );
 };
 
 Paragraph.defaultProps = {
-  children: 'Paragraph',
+  text: 'Paragraph',
   size: 1,
   weight: '',
   color: 'black',

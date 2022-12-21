@@ -1,44 +1,40 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Badge from '../components/atoms/Badge';
+import Paragraph from '../components/atoms/Paragraph';
 import { color } from '../utils/colors';
+import { typography } from '../utils/typography';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Atoms/Badge',
-  component: Badge,
+  title: 'Atoms/Paragraph',
+  component: Paragraph,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    badgeSize: {
+    size: {
       control: { type: 'select' },
-      options: [0, 1, 2, 3, 4, 5, 6],
+      options: [1, 2, 3, 4, 5, 6, 0],
     },
-    textSize: {
+    weight: {
       control: { type: 'select' },
-      options: [0, 1],
+      options: Object.keys(typography.weight),
     },
-    variant: {
+    color: {
       control: { type: 'select' },
-      options: [
-        'default',
-        'primary',
-        'secondary',
-        'important',
-        'added',
-        'removed',
-      ],
+      options: { ...color },
     },
-    text: { control: { type: 'text' } },
   },
-} as ComponentMeta<typeof Badge>;
+} as ComponentMeta<typeof Paragraph>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
+const Template: ComponentStory<typeof Paragraph> = (args) => (
+  <Paragraph {...args} />
+);
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  badgeSize: 0,
-  variant: 'default',
-  text: '15',
+  text: 'Paragraph',
+  size: 1,
+  weight: '',
+  color: color.black,
 };

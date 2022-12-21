@@ -1,44 +1,38 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Badge from '../components/atoms/Badge';
+import Icon from '../components/atoms/Icon';
 import { color } from '../utils/colors';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Atoms/Badge',
-  component: Badge,
+  title: 'Atoms/Icon',
+  component: Icon,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    badgeSize: {
+    name: {
       control: { type: 'select' },
-      options: [0, 1, 2, 3, 4, 5, 6],
+      options: ['circle', 'eye'],
     },
-    textSize: {
+    stroke: {
       control: { type: 'select' },
-      options: [0, 1],
+      options: { none: 'transparent', currentColor: 'currentColor', ...color },
     },
-    variant: {
+    fill: {
       control: { type: 'select' },
-      options: [
-        'default',
-        'primary',
-        'secondary',
-        'important',
-        'added',
-        'removed',
-      ],
+      options: { none: 'transparent', currentColor: 'currentColor', ...color },
     },
-    text: { control: { type: 'text' } },
   },
-} as ComponentMeta<typeof Badge>;
+} as ComponentMeta<typeof Icon>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
+const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  badgeSize: 0,
-  variant: 'default',
-  text: '15',
+  name: 'circle',
+  width: '24px',
+  height: '24px',
+  stroke: 'currentColor',
+  fill: '',
 };

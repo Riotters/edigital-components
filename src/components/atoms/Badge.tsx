@@ -32,7 +32,10 @@ const borderWidth = ({ badgeSize }: BadgeWrapperProps): number => {
 };
 
 const BadgeWrapper = styled.span<BadgeWrapperProps>`
-  display: block;
+  display: flex;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border-width: 1px;
   border-style: solid;
   border-radius: 64px;
@@ -134,7 +137,7 @@ type BadgeProps = {
   textSize?: number;
   className?: string;
   variant?: string;
-  text?: string | number;
+  text?: string;
   children?: string | number;
 };
 
@@ -145,10 +148,9 @@ const Badge: React.FC<BadgeProps> = ({
   variant,
   text,
 }) => {
-  console.log(badgeSize);
   return (
     <BadgeWrapper badgeSize={badgeSize} variant={variant} className={className}>
-      {text && (
+      {text && badgeSize == 0 && (
         <Paragraph
           text={text}
           color="inherit"
