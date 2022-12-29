@@ -1,15 +1,35 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { checkColor, checkShadow } from '../../utils/functions';
+import styled from 'styled-components';
+import { checkColor } from '../../utils/functions';
 import Heading from './Heading';
 import Icon from './Icon';
 import Image from './Image';
 import Badge from './Badge';
+import Paragraph from './Paragraph';
 
 interface AvatarWrapperProps {
-  size?: number;
+  size?: string;
   color?: string;
 }
+
+const avatarSize = ({ size }: AvatarWrapperProps): number => {
+  switch (size) {
+    case 'xl':
+      return 120;
+    case 'l':
+      return 80;
+    case 'm':
+      return 64;
+    case 's':
+      return 48;
+    case 'xs':
+      return 32;
+    case '2xs':
+      return 24;
+    default:
+      return 160;
+  }
+};
 
 const AvatarWrapper = styled.div<AvatarWrapperProps>`
   position: relative;
@@ -20,85 +40,44 @@ const AvatarWrapper = styled.div<AvatarWrapperProps>`
   background-color: ${(props) => props.color && checkColor(props.color)};
   aspect-ratio: 1/1;
   border: 2px solid ${checkColor('white')};
+  width: ${avatarSize}px;
+  height: ${avatarSize}px;
 
   .avatar {
-    &__notification {
+    &__status {
       position: absolute;
       top: 0;
       right: 0;
     }
   }
 
-  ${({ size }) =>
-    size === 1 &&
-    css`
-      width: 160px;
-      height: 160px;
-    `};
-  ${({ size }) =>
-    size === 2 &&
-    css`
-      width: 120px;
-      height: 120px;
-    `};
-  ${({ size }) =>
-    size === 3 &&
-    css`
-      width: 80px;
-      height: 80px;
-    `};
-  ${({ size }) =>
-    size === 4 &&
-    css`
-      width: 64px;
-      height: 64px;
-    `};
-  ${({ size }) =>
-    size === 5 &&
-    css`
-      width: 48px;
-      height: 48px;
-    `};
-  ${({ size }) =>
-    size === 6 &&
-    css`
-      width: 32px;
-      height: 32px;
-    `};
-  ${({ size }) =>
-    size === 7 &&
-    css`
-      width: 24px;
-      height: 24px;
-    `};
-  ${({ size }) =>
-    size === 8 &&
-    css`
-      width: 16px;
-      height: 16px;
-    `};
+  * {
+    user-drag: none;
+    user-select: none;
+  }
 `;
 
 interface userProps {
-  [key: string]: string | any;
+  name?: { [key: string]: string };
   icon?: string;
   avatar?: string;
+  color?: string;
 }
 
 type AvatarProps = {
-  size?: number;
+  size?: string;
   user?: userProps;
-  count?: string;
+  usersCount?: string | number;
   color?: string;
-  isNotification?: boolean;
+  status?: string;
 };
 
 const Avatar: React.FC<AvatarProps> = ({
   size,
   user,
-  count,
+  usersCount,
   color,
-  isNotification,
+  status,
 }) => {
   const getInitials = (firstName: string, lastName: string): string => {
     const initials =
@@ -112,60 +91,63 @@ const Avatar: React.FC<AvatarProps> = ({
         <Image name={user.avatar} height="100%" />
       ) : user && user?.icon ? (
         <Icon
-          width={
-            size == 1
+          size={
+            size == '2xl'
               ? '96px'
-              : size == 2
+              : size == 'xl'
               ? '72px'
-              : size == 3
+              : size == 'l'
               ? '48px'
-              : size == 4
+              : size == 'm'
               ? '40px'
-              : size == 5
+              : size == 's'
               ? '32px'
-              : size == 6
+              : size == 'xs'
               ? '20px'
-              : size == 7
+              : size == '2xs'
               ? '12px'
-              : size == 8
-              ? '8px'
-              : '32px'
-          }
-          height={
-            size == 1
-              ? '96px'
-              : size == 2
-              ? '72px'
-              : size == 3
-              ? '48px'
-              : size == 4
-              ? '40px'
-              : size == 5
-              ? '32px'
-              : size == 6
-              ? '20px'
-              : size == 7
-              ? '12px'
-              : size == 8
-              ? '8px'
-              : '32px'
+              : '40px'
           }
           name={user.icon}
         />
       ) : user && user?.name ? (
-        <Heading
-          text={getInitials(user?.name.firstName, user?.name.lastName)}
+        size === 's' || size === 'xs' || size === '2xs' ? (
+          <Paragraph
+            as="span"
+            size={size === 's' ? '2xl' : size === 'xs' ? 's' : 'xs'}
+            text={getInitials(user?.name.firstName, user?.name.lastName)}
+            weight="medium"
+          />
+        ) : (
+          <Heading
+            as="span"
+            size={
+              size === '2xl'
+                ? 'xl'
+                : size === 'xl'
+                ? 'l'
+                : size === 'l'
+                ? 's'
+                : 'xs'
+            }
+            text={getInitials(user?.name.firstName, user?.name.lastName)}
+            weight="medium"
+          />
+        )
+      ) : (
+        <Paragraph
+          as="span"
+          size={size === 's' ? '2xl' : size === 'xs' ? 's' : 'xs'}
+          text={usersCount ? '+' + usersCount : '??'}
           weight="medium"
         />
-      ) : (
-        <Heading text={count ? count : '??'} weight="medium" size={size} />
       )}
-      {isNotification && (
+      {status && (
         <Badge
-          text=""
-          variant="primary"
-          badgeSize={size}
-          className="avatar__notification"
+          type="status"
+          variant={status}
+          statusSize={size}
+          className="avatar__status"
         />
       )}
     </AvatarWrapper>
@@ -173,7 +155,7 @@ const Avatar: React.FC<AvatarProps> = ({
 };
 
 Avatar.defaultProps = {
-  size: 5,
+  size: 's',
   color: 'orange25',
 };
 

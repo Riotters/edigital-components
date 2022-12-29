@@ -5,8 +5,7 @@ import IconCircle from '../../assets/svg/circle.svg';
 import IconEye from '../../assets/svg/eye.svg';
 
 interface IconWrapperProps {
-  width?: string;
-  height?: string;
+  size?: string;
   fill?: string;
   stroke?: string;
 }
@@ -25,32 +24,30 @@ interface IconWrapperProps {
 // };
 
 const IconWrapper = styled.div<IconWrapperProps>`
-  width: ${(props) => props.width && props.width};
-  height: ${(props) => props.height && props.height};
+  width: 100%;
+  max-width: ${(props) => props.size && props.size};
 
   svg {
     width: 100%;
-    max-width: unset;
     height: 100%;
-  }
 
-  svg path {
-    fill: ${(props) => props.fill && props.fill};
-    stroke: ${(props) => props.stroke && props.stroke};
+    path {
+      fill: ${(props) => props.fill && props.fill};
+      stroke: ${(props) => props.stroke && props.stroke};
+    }
   }
 `;
 
 type IconProps = {
   name?: string;
-  width?: string;
-  height?: string;
+  size?: string;
   fill?: string;
   stroke?: string;
 };
 
-const Icon: React.FC<IconProps> = ({ name, width, height, fill, stroke }) => {
+const Icon: React.FC<IconProps> = ({ name, size, fill, stroke }) => {
   return (
-    <IconWrapper width={width} height={height} fill={fill} stroke={stroke}>
+    <IconWrapper size={size} fill={fill} stroke={stroke}>
       <ReactSVG src={name === 'eye' ? IconEye : IconCircle} />
     </IconWrapper>
   );
@@ -58,8 +55,7 @@ const Icon: React.FC<IconProps> = ({ name, width, height, fill, stroke }) => {
 
 Icon.defaultProps = {
   name: 'circle',
-  width: '24px',
-  height: '24px',
+  size: '24px',
   stroke: 'currentColor',
 };
 

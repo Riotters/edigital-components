@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { checkColor, checkShadow } from '../../utils/functions';
+import { checkColor } from '../../utils/functions';
 import { typography } from '../../utils/typography';
 import Icon from './Icon';
 
@@ -31,53 +31,49 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 
   pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 
-  svg path {
-    stroke: currentColor;
-  }
-
   ${({ size, text }) =>
     size === 'xs' &&
     css`
       padding: ${text ? '7px 13px' : '7px'};
-      font-size: ${typography.textSm.size};
-      line-height: ${typography.textSm.height};
-      letter-spacing: ${typography.textSm.spacing};
+      font-size: ${typography.textS.size};
+      line-height: ${typography.textS.height};
+      letter-spacing: ${typography.textS.spacing};
     `};
 
   ${({ size, text }) =>
     size === 's' &&
     css`
       padding: ${text ? '9px 15px' : '9px'};
-      font-size: ${typography.textSm.size};
-      line-height: ${typography.textSm.height};
-      letter-spacing: ${typography.textSm.spacing};
+      font-size: ${typography.textS.size};
+      line-height: ${typography.textS.height};
+      letter-spacing: ${typography.textS.spacing};
     `};
 
   ${({ size, text }) =>
     size === 'm' &&
     css`
       padding: ${text ? '9px 17px' : '11px'};
-      font-size: ${typography.textSm.size};
-      line-height: ${typography.textSm.height};
-      letter-spacing: ${typography.textSm.spacing};
+      font-size: ${typography.textS.size};
+      line-height: ${typography.textS.height};
+      letter-spacing: ${typography.textS.spacing};
     `};
 
   ${({ size, text }) =>
     size === 'l' &&
     css`
       padding: ${text ? '11px 19px' : '13px'};
-      font-size: ${typography.textLg.size};
-      line-height: ${typography.textLg.height};
-      letter-spacing: ${typography.textLg.spacing};
+      font-size: ${typography.textL.size};
+      line-height: ${typography.textL.height};
+      letter-spacing: ${typography.textL.spacing};
     `};
 
   ${({ size, text }) =>
     size === 'xl' &&
     css`
       padding: ${text ? '15px 27px' : '15px'};
-      font-size: ${typography.textLg.size};
-      line-height: ${typography.textLg.height};
-      letter-spacing: ${typography.textLg.spacing};
+      font-size: ${typography.textL.size};
+      line-height: ${typography.textL.height};
+      letter-spacing: ${typography.textL.spacing};
     `};
 
   ${({ variant, disabled }) =>
