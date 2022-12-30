@@ -15,13 +15,13 @@ interface headingSizeIF {
 
 const headingSize = ({ size }: HeadingWrapperProps): headingSizeIF => {
   const propsSize: any = size;
-  const thisIs: string =
+  const calculatedSize: string =
     'display' + propsSize.charAt(0).toUpperCase() + propsSize.slice(1);
 
   return {
-    fontSize: typography[thisIs].size,
-    lineHeight: typography[thisIs].height,
-    letterSpacing: typography[thisIs].spacing,
+    fontSize: typography[calculatedSize].size,
+    lineHeight: typography[calculatedSize].height,
+    letterSpacing: typography[calculatedSize].spacing,
   };
 };
 
@@ -36,7 +36,7 @@ const HeadingWrapper = styled.h1<HeadingWrapperProps>`
 
 type HeadingProps = {
   className?: string;
-  as?: any;
+  asTag?: any;
   size?: string;
   weight?: string;
   color?: string;
@@ -45,7 +45,7 @@ type HeadingProps = {
 
 const Heading: React.FC<HeadingProps> = ({
   className,
-  as,
+  asTag,
   size,
   weight,
   color,
@@ -54,7 +54,7 @@ const Heading: React.FC<HeadingProps> = ({
   return (
     <HeadingWrapper
       className={className}
-      as={as}
+      as={asTag}
       size={size}
       weight={weight}
       color={color}
@@ -65,7 +65,7 @@ const Heading: React.FC<HeadingProps> = ({
 };
 
 Heading.defaultProps = {
-  as: 'h1',
+  asTag: 'h1',
   size: '2xl',
   weight: 'bold',
   color: 'black',

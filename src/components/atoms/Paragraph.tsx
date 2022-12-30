@@ -15,13 +15,13 @@ interface paragraphSizeIF {
 
 const paragraphSize = ({ size }: ParagraphWrapperProps): paragraphSizeIF => {
   const propsSize: any = size;
-  const thisIs: any =
+  const calculatedSize: any =
     'text' + propsSize.charAt(0).toUpperCase() + propsSize.slice(1);
 
   return {
-    fontSize: typography[thisIs].size,
-    lineHeight: typography[thisIs].height,
-    letterSpacing: typography[thisIs].spacing,
+    fontSize: typography[calculatedSize].size,
+    lineHeight: typography[calculatedSize].height,
+    letterSpacing: typography[calculatedSize].spacing,
   };
 };
 
@@ -36,7 +36,7 @@ const ParagraphWrapper = styled.p<ParagraphWrapperProps>`
 
 type ParagraphProps = {
   className?: string;
-  as?: any;
+  asTag?: any;
   size?: string;
   weight?: string;
   color?: string;
@@ -45,7 +45,7 @@ type ParagraphProps = {
 
 const Paragraph: React.FC<ParagraphProps> = ({
   className,
-  as,
+  asTag,
   size,
   weight,
   color,
@@ -54,7 +54,7 @@ const Paragraph: React.FC<ParagraphProps> = ({
   return (
     <ParagraphWrapper
       className={className}
-      as={as}
+      as={asTag}
       size={size}
       weight={weight}
       color={color}
@@ -65,7 +65,7 @@ const Paragraph: React.FC<ParagraphProps> = ({
 };
 
 Paragraph.defaultProps = {
-  as: 'p',
+  asTag: 'p',
   size: '2xl',
   color: 'black',
   text: 'Paragraph',

@@ -119,14 +119,14 @@ const Avatar: React.FC<AvatarProps> = ({
       ) : user && user?.name ? (
         size === 's' || size === 'xs' || size === '2xs' ? (
           <Paragraph
-            as="span"
+            asTag="span"
             size={size === 's' ? '2xl' : size === 'xs' ? 's' : 'xs'}
             text={getInitials(user?.name.firstName, user?.name.lastName)}
             weight="medium"
           />
         ) : (
           <Heading
-            as="span"
+            asTag="span"
             size={
               size === '2xl'
                 ? 'xl'
@@ -142,7 +142,7 @@ const Avatar: React.FC<AvatarProps> = ({
         )
       ) : (
         <Paragraph
-          as="span"
+          asTag="span"
           size={size === 's' ? '2xl' : size === 'xs' ? 's' : 'xs'}
           text={usersCount ? '+' + usersCount : '??'}
           weight="medium"

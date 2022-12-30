@@ -22,7 +22,7 @@ export default {
       control: { type: 'select' },
       options: { ...color },
     },
-    as: {
+    asTag: {
       control: { type: 'select' },
       options: { heading: 'h1', paragraph: 'p', span: 'span' },
     },
