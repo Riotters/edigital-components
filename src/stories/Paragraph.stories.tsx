@@ -26,6 +26,11 @@ export default {
       control: { type: 'select' },
       options: { heading: 'h1', paragraph: 'p', span: 'span' },
     },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof Paragraph>;
 

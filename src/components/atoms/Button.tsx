@@ -221,21 +221,19 @@ const ButtonWrapper = styled.button<ButtonWrapperProps>`
 `;
 
 type ButtonProps = {
+  className?: string;
   variant?: string;
   size?: string;
   disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
   text?: string | boolean;
   icon?: string;
   iconPosition?: string | boolean;
   border?: string;
 };
 
-const handleClick = (): unknown => {
-  return console.log('This is working!');
-};
-
 const Button: React.FC<ButtonProps> = ({
+  className,
   variant,
   size,
   disabled,
@@ -246,12 +244,11 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <ButtonWrapper
-      className="button"
+      className={className}
       variant={variant}
       size={size}
       disabled={disabled}
       border={border}
-      onClick={handleClick}
       text={text}
     >
       {!icon &&

@@ -39,15 +39,16 @@ const IconWrapper = styled.div<IconWrapperProps>`
 `;
 
 type IconProps = {
+  className?: string;
   name?: string;
   size?: string;
   fill?: string;
   stroke?: string;
 };
 
-const Icon: React.FC<IconProps> = ({ name, size, fill, stroke }) => {
+const Icon: React.FC<IconProps> = ({ className, name, size, fill, stroke }) => {
   return (
-    <IconWrapper size={size} fill={fill} stroke={stroke}>
+    <IconWrapper className={className} size={size} fill={fill} stroke={stroke}>
       <ReactSVG src={name === 'eye' ? IconEye : IconCircle} />
     </IconWrapper>
   );

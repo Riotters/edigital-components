@@ -17,13 +17,20 @@ const ImageWrapper = styled.div<ImageWrapperProps>`
 `;
 
 type ImageProps = {
+  className?: string;
   height?: string;
   size?: string;
   name?: string;
   alt?: string;
 };
 
-const Image: React.FC<ImageProps> = ({ height, size, name, alt }) => {
+const Image: React.FC<ImageProps> = ({
+  className,
+  height,
+  size,
+  name,
+  alt,
+}) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
@@ -50,7 +57,7 @@ const Image: React.FC<ImageProps> = ({ height, size, name, alt }) => {
       ) : error ? (
         'Error while loading.'
       ) : (
-        <ImageWrapper height={height} size={size}>
+        <ImageWrapper className={className} height={height} size={size}>
           <img src={`${image}`} alt={alt} />
         </ImageWrapper>
       )}

@@ -16,10 +16,12 @@ export default {
     statusSize: {
       control: { type: 'select' },
       options: ['2xl', 'xl', 'l', 'm', 's', 'xs'],
+      if: { arg: 'type', eq: 'status' },
     },
     infoSize: {
       control: { type: 'select' },
       options: ['s', 'xs'],
+      if: { arg: 'type', eq: 'info' },
     },
     variant: {
       control: { type: 'select' },
@@ -33,6 +35,11 @@ export default {
       ],
     },
     value: { control: { type: 'text' } },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof Badge>;
 
@@ -42,7 +49,8 @@ const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  statusSize: 'm',
+  type: 'info',
+  infoSize: 'xs',
   variant: 'default',
   value: '15',
 };

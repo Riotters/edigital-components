@@ -21,6 +21,11 @@ export default {
       control: { type: 'select' },
       options: { none: 'transparent', currentColor: 'currentColor', ...color },
     },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof Icon>;
 

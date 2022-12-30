@@ -65,6 +65,7 @@ interface userProps {
 }
 
 type AvatarProps = {
+  className?: string;
   size?: string;
   user?: userProps;
   usersCount?: string | number;
@@ -73,6 +74,7 @@ type AvatarProps = {
 };
 
 const Avatar: React.FC<AvatarProps> = ({
+  className,
   size,
   user,
   usersCount,
@@ -86,7 +88,11 @@ const Avatar: React.FC<AvatarProps> = ({
   };
 
   return (
-    <AvatarWrapper className="avatar" size={size} color={color || user?.color}>
+    <AvatarWrapper
+      className={'avatar' + className}
+      size={size}
+      color={color || user?.color}
+    >
       {user && user?.avatar ? (
         <Image name={user.avatar} height="100%" />
       ) : user && user?.icon ? (

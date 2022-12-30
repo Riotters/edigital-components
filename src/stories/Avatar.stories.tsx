@@ -28,12 +28,23 @@ export default {
     status: {
       control: { type: 'select' },
       options: {
+        none: null,
         default: 'default',
         primary: 'primary',
         secondary: 'secondary',
         important: 'important',
         added: 'added',
         removed: 'removed',
+      },
+    },
+    usersCount: {
+      table: {
+        disable: true,
+      },
+    },
+    className: {
+      table: {
+        disable: true,
       },
     },
   },
