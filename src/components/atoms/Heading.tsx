@@ -1,118 +1,75 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { checkColor, checkShadow } from '../../utils/functions';
+import styled from 'styled-components';
+import { checkColor } from '../../utils/functions';
 import { typography } from '../../utils/typography';
 
 interface HeadingWrapperProps {
-  size?: number;
+  size?: string;
   weight?: string;
   color?: string;
 }
 
+interface headingSizeIF {
+  [key: string]: string;
+}
+
+const headingSize = ({ size }: HeadingWrapperProps): headingSizeIF => {
+  const propsSize: any = size;
+  const calculatedSize: string =
+    'display' + propsSize.charAt(0).toUpperCase() + propsSize.slice(1);
+
+  return {
+    fontSize: typography[calculatedSize].size,
+    lineHeight: typography[calculatedSize].height,
+    letterSpacing: typography[calculatedSize].spacing,
+  };
+};
+
 const HeadingWrapper = styled.h1<HeadingWrapperProps>`
   font-weight: ${(props) =>
-    props.weight ? typography.weight[props.weight] : 700};
+    props.weight ? typography.weight[props.weight] : 'bold'};
   color: ${(props) =>
     props.color ? checkColor(props.color) : checkColor('black')};
 
-  ${({ size }) =>
-    size === 1 &&
-    css`
-      font-size: ${typography.display2xl.size};
-      line-height: ${typography.display2xl.height};
-      letter-spacing: ${typography.display2xl.spacing};
-    `};
-
-  ${({ size }) =>
-    size === 2 &&
-    css`
-      font-size: ${typography.displayXl.size};
-      line-height: ${typography.displayXl.height};
-      letter-spacing: ${typography.displayXl.spacing};
-    `};
-
-  ${({ size }) =>
-    size === 3 &&
-    css`
-      font-size: ${typography.displayLg.size};
-      line-height: ${typography.displayLg.height};
-      letter-spacing: ${typography.displayLg.spacing};
-    `};
-
-  ${({ size }) =>
-    size === 4 &&
-    css`
-      font-size: ${typography.displayMd.size};
-      line-height: ${typography.displayMd.height};
-      letter-spacing: ${typography.displayMd.spacing};
-    `};
-
-  ${({ size }) =>
-    size === 5 &&
-    css`
-      font-size: ${typography.displaySm.size};
-      line-height: ${typography.displaySm.height};
-      letter-spacing: ${typography.displaySm.spacing};
-    `};
-
-  ${({ size }) =>
-    size === 6 &&
-    css`
-      font-size: ${typography.displayXs.size};
-      line-height: ${typography.displayXs.height};
-      letter-spacing: ${typography.displayXs.spacing};
-    `};
+  ${headingSize};
 `;
 
 type HeadingProps = {
-  children?: string;
-  text?: string;
-  size?: number;
+  className?: string;
+  asTag?: any;
+  size?: string;
   weight?: string;
   color?: string;
+  text?: string;
 };
 
 const Heading: React.FC<HeadingProps> = ({
-  children,
-  text,
+  className,
+  asTag,
   size,
   weight,
   color,
+  text,
 }) => {
   return (
     <HeadingWrapper
-      className="heading"
-      as={
-        size == 1
-          ? 'h1'
-          : size == 2
-          ? 'h2'
-          : size == 3
-          ? 'h3'
-          : size == 4
-          ? 'h4'
-          : size == 5
-          ? 'h5'
-          : size == 6
-          ? 'h6'
-          : size == 0
-          ? 'p'
-          : 'h1'
-      }
+      className={className}
+      as={asTag}
       size={size}
       weight={weight}
       color={color}
     >
-      {children && !text ? children : text}
+      {text}
     </HeadingWrapper>
   );
 };
-//
+
 Heading.defaultProps = {
-  children: 'Heading',
-  size: 1,
+  asTag: 'h1',
+  size: '2xl',
   weight: 'bold',
   color: 'black',
+  text: 'Heading',
 };
 
 export default Heading;

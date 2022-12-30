@@ -21,6 +21,11 @@ export default {
       control: { type: 'select' },
       options: { none: 'transparent', currentColor: 'currentColor', ...color },
     },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof Icon>;
 
@@ -31,8 +36,7 @@ export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   name: 'circle',
-  width: '24px',
-  height: '24px',
+  size: '32px',
   stroke: 'currentColor',
   fill: '',
 };

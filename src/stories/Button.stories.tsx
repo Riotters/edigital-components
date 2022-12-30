@@ -38,6 +38,11 @@ export default {
       options: ['left', 'right'],
       if: { arg: 'text' },
     },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -51,7 +56,7 @@ Default.args = {
   variant: 'primary',
   size: 'm',
   border: 'normal',
-  icon: '',
-  iconPosition: 'left',
+  icon: 'circle',
+  iconPosition: 'right',
   disabled: false,
 };

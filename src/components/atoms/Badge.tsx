@@ -1,92 +1,75 @@
-import { check } from 'prettier';
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { checkColor } from '../../utils/functions';
 import Paragraph from './Paragraph';
 
 interface BadgeWrapperProps {
-  text?: string | number | boolean;
-  badgeSize?: number;
+  type?: string;
+  value?: string | number | boolean;
+  statusSize?: string;
   variant?: string;
 }
 
-const borderWidth = ({ badgeSize }: BadgeWrapperProps): number => {
-  switch (badgeSize) {
-    case 2:
-      return 3.5;
-    case 3:
-      return 3;
-    case 4:
-      return 2.5;
-    case 5:
-      return 2;
-    case 6:
-      return 1.5;
-    case 7:
-      return 1;
-    case 8:
-      return 0.5;
+interface badgeStatusSizeIF {
+  [key: string]: number;
+}
+
+const badgeStatusSize = ({
+  statusSize,
+}: BadgeWrapperProps): badgeStatusSizeIF => {
+  switch (statusSize) {
+    case 'xl':
+      return {
+        borderWidth: 3.5,
+        width: 32,
+        height: 32,
+      };
+    case 'l':
+      return {
+        borderWidth: 3,
+        width: 24,
+        height: 24,
+      };
+    case 'm':
+      return {
+        borderWidth: 2.5,
+        width: 20,
+        height: 20,
+      };
+    case 's':
+      return {
+        borderWidth: 2,
+        width: 16,
+        height: 16,
+      };
+    case 'xs':
+      return {
+        borderWidth: 1.5,
+        width: 10,
+        height: 10,
+      };
+    case '2xs':
+      return {
+        borderWidth: 1,
+        width: 8,
+        height: 8,
+      };
     default:
-      return 4;
+      return {
+        borderWidth: 4,
+        width: 40,
+        height: 40,
+      };
   }
 };
 
 const BadgeWrapper = styled.span<BadgeWrapperProps>`
-  display: flex;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-width: 1px;
   border-style: solid;
   border-radius: 64px;
   text-align: center;
-
-  ${({ text, badgeSize }) =>
-    text !== '' &&
-    badgeSize === 0 &&
-    css`
-      padding: 0 7px;
-      min-width: 32px;
-    `};
-
-  ${({ text, badgeSize }) =>
-    !text &&
-    badgeSize != 0 &&
-    css`
-      border-width: ${borderWidth}px;
-      border-color: ${checkColor('white')} !important;
-      width: ${badgeSize == 1
-        ? '40px'
-        : badgeSize == 2
-        ? '32px'
-        : badgeSize == 3
-        ? '24px'
-        : badgeSize == 4
-        ? '20px'
-        : badgeSize == 5
-        ? '16px'
-        : badgeSize == 6
-        ? '10px'
-        : badgeSize == 7
-        ? '8px'
-        : '4px'};
-      height: ${badgeSize == 1
-        ? '40px'
-        : badgeSize == 2
-        ? '32px'
-        : badgeSize == 3
-        ? '24px'
-        : badgeSize == 4
-        ? '20px'
-        : badgeSize == 5
-        ? '16px'
-        : badgeSize == 6
-        ? '10px'
-        : badgeSize == 7
-        ? '8px'
-        : '4px'};
-      aspect-ratio: 1/1;
-    `};
 
   ${({ variant }) =>
     variant === 'default' &&
@@ -95,6 +78,7 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
       color: ${checkColor('gray900')};
       border-color: ${checkColor('gray25')};
     `};
+
   ${({ variant }) =>
     variant === 'primary' &&
     css`
@@ -102,6 +86,7 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
       color: ${checkColor('white')};
       border-color: ${checkColor('orange500')};
     `};
+
   ${({ variant }) =>
     variant === 'secondary' &&
     css`
@@ -109,6 +94,7 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
       color: ${checkColor('orange500')};
       border-color: ${checkColor('gray50')};
     `};
+
   ${({ variant }) =>
     variant === 'important' &&
     css`
@@ -116,6 +102,7 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
       color: ${checkColor('white')};
       border-color: ${checkColor('red500')};
     `};
+
   ${({ variant }) =>
     variant === 'added' &&
     css`
@@ -123,6 +110,7 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
       color: ${checkColor('green500')};
       border-color: ${checkColor('green25')};
     `};
+
   ${({ variant }) =>
     variant === 'removed' &&
     css`
@@ -130,32 +118,56 @@ const BadgeWrapper = styled.span<BadgeWrapperProps>`
       color: ${checkColor('red500')};
       border-color: ${checkColor('red25')};
     `};
+
+  ${({ type, value }) =>
+    type === 'info' &&
+    value !== null &&
+    css`
+      border-width: 1px;
+      padding: 0 7px;
+      min-width: 32px;
+    `};
+
+  ${({ type, value }) =>
+    type === 'status' &&
+    !value &&
+    css`
+      border-color: ${checkColor('white')};
+      ${badgeStatusSize}
+      aspect-ratio: 1/1;
+    `};
 `;
 
 type BadgeProps = {
-  badgeSize?: number;
-  textSize?: number;
   className?: string;
+  type: string;
+  statusSize?: string;
+  infoSize?: string;
   variant?: string;
-  text?: string;
-  children?: string | number;
+  value?: string;
 };
 
 const Badge: React.FC<BadgeProps> = ({
-  textSize,
-  badgeSize,
+  type,
+  infoSize,
+  statusSize,
   className,
   variant,
-  text,
+  value,
 }) => {
   return (
-    <BadgeWrapper badgeSize={badgeSize} variant={variant} className={className}>
-      {text && badgeSize == 0 && (
+    <BadgeWrapper
+      className={className}
+      type={type}
+      statusSize={statusSize}
+      variant={variant}
+    >
+      {type === 'info' && value && (
         <Paragraph
-          text={text}
+          text={value}
           color="inherit"
           weight="semibold"
-          size={textSize == 1 ? 6 : 5}
+          size={infoSize}
         />
       )}
     </BadgeWrapper>
@@ -163,10 +175,10 @@ const Badge: React.FC<BadgeProps> = ({
 };
 
 Badge.defaultProps = {
-  textSize: 1,
-  badgeSize: 0,
+  type: 'info',
+  infoSize: 's',
   variant: 'default',
-  text: '15',
+  value: '15',
 };
 
 export default Badge;

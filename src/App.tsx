@@ -100,53 +100,52 @@ const App: React.FC = () => {
         <Button border="small" variant="success" size="xl"></Button>
       </div>
       <div className="preview">
-        <Heading size={1} weight="regular"></Heading>
-        <Heading size={2} weight="semibold"></Heading>
-        <Heading size={3} weight="medium"></Heading>
-        <Heading size={4} weight="bold"></Heading>
-        <Heading size={5} weight="regular"></Heading>
-        <Heading size={6} weight="bold"></Heading>
+        <Heading size="2xl" weight="regular"></Heading>
+        <Heading size="xl" weight="semibold"></Heading>
+        <Heading size="l" weight="medium"></Heading>
+        <Heading size="m" weight="bold"></Heading>
+        <Heading size="s" weight="regular"></Heading>
+        <Heading size="xs" weight="bold"></Heading>
       </div>
       <div className="preview">
-        <Paragraph size={1}></Paragraph>
-        <Paragraph size={2}></Paragraph>
-        <Paragraph size={3}></Paragraph>
-        <Paragraph size={4}></Paragraph>
-        <Paragraph size={5}></Paragraph>
-        <Paragraph size={6}></Paragraph>
+        <Paragraph size="2xl"></Paragraph>
+        <Paragraph size="xl"></Paragraph>
+        <Paragraph size="l"></Paragraph>
+        <Paragraph size="m"></Paragraph>
+        <Paragraph size="s"></Paragraph>
+        <Paragraph size="xs"></Paragraph>
       </div>
       <div className="preview">
-        <Image />
+        <Image size="128px" />
         <Icon name="eye" />
       </div>
       <div className="preview">
-        <Avatar size={1} isNotification={true} />
         <Avatar
-          user={{ avatar: 'placeholder' }}
-          size={1}
-          isNotification={true}
+          user={{ name: { firstName: 'Rob', lastName: 'Bob' } }}
+          size="2xs"
+          status="primary"
         />
-        <Avatar user={{ icon: 'user-03' }} size={1} isNotification={true} />
-        <Avatar user={{ icon: 'user-03' }} size={3} isNotification={true} />
+        <Avatar user={{ avatar: 'placeholder' }} size="2xl" status="primary" />
+        <Avatar user={{ icon: 'user-03' }} size="2xl" status="primary" />
       </div>
       <div className="preview">
         <AvatarGroup />
       </div>
       <div className="preview">
-        <Badge variant="default" />
-        <Badge variant="primary" />
-        <Badge variant="secondary" />
-        <Badge variant="important" />
-        <Badge variant="added" />
-        <Badge variant="removed" />
+        <Badge type="info" variant="default" />
+        <Badge type="info" variant="primary" />
+        <Badge type="info" variant="secondary" />
+        <Badge type="info" variant="important" />
+        <Badge type="info" variant="added" />
+        <Badge type="info" variant="removed" />
       </div>
       <div className="preview">
-        <Badge textSize={2} variant="default" />
-        <Badge textSize={2} variant="primary" />
-        <Badge textSize={2} variant="secondary" />
-        <Badge textSize={2} variant="important" />
-        <Badge textSize={2} variant="added" />
-        <Badge textSize={2} variant="removed" />
+        <Badge type="info" infoSize="xs" variant="default" />
+        <Badge type="info" infoSize="xs" variant="primary" />
+        <Badge type="info" infoSize="xs" variant="secondary" />
+        <Badge type="info" infoSize="xs" variant="important" />
+        <Badge type="info" infoSize="xs" variant="added" />
+        <Badge type="info" infoSize="xs" variant="removed" />
       </div>
     </div>
   );

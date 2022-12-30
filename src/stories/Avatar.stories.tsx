@@ -11,7 +11,7 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: [1, 2, 3, 4, 5, 6, 7, 8],
+      options: ['2xl', 'xl', 'l', 'm', 's', 'xs'],
     },
     color: {
       control: { type: 'select' },
@@ -20,9 +20,31 @@ export default {
     user: {
       control: { type: 'select' },
       options: {
-        none: {},
+        name: { name: { firstName: 'Rob', lastName: 'Bob' } },
         avatar: { avatar: 'placeholder' },
         icon: { icon: 'eye' },
+      },
+    },
+    status: {
+      control: { type: 'select' },
+      options: {
+        none: null,
+        default: 'default',
+        primary: 'primary',
+        secondary: 'secondary',
+        important: 'important',
+        added: 'added',
+        removed: 'removed',
+      },
+    },
+    usersCount: {
+      table: {
+        disable: true,
+      },
+    },
+    className: {
+      table: {
+        disable: true,
       },
     },
   },
@@ -34,7 +56,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  size: 5,
+  size: 'm',
   color: color.orange25,
   user: { avatar: 'placeholder' },
 };

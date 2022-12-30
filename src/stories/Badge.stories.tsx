@@ -9,13 +9,19 @@ export default {
   component: Badge,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    badgeSize: {
+    type: {
       control: { type: 'select' },
-      options: [0, 1, 2, 3, 4, 5, 6],
+      options: ['info', 'status'],
     },
-    textSize: {
+    statusSize: {
       control: { type: 'select' },
-      options: [0, 1],
+      options: ['2xl', 'xl', 'l', 'm', 's', 'xs'],
+      if: { arg: 'type', eq: 'status' },
+    },
+    infoSize: {
+      control: { type: 'select' },
+      options: ['s', 'xs'],
+      if: { arg: 'type', eq: 'info' },
     },
     variant: {
       control: { type: 'select' },
@@ -28,7 +34,12 @@ export default {
         'removed',
       ],
     },
-    text: { control: { type: 'text' } },
+    value: { control: { type: 'text' } },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as ComponentMeta<typeof Badge>;
 
@@ -38,7 +49,8 @@ const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  badgeSize: 0,
+  type: 'info',
+  infoSize: 'xs',
   variant: 'default',
-  text: '15',
+  value: '15',
 };

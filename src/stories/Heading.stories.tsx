@@ -12,7 +12,7 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: [1, 2, 3, 4, 5, 6, 0],
+      options: ['2xl', 'xl', 'l', 'm', 's', 'xs'],
     },
     weight: {
       control: { type: 'select' },
@@ -21,6 +21,15 @@ export default {
     color: {
       control: { type: 'select' },
       options: { ...color },
+    },
+    asTag: {
+      control: { type: 'select' },
+      options: { heading: 'h1', paragraph: 'p', span: 'span' },
+    },
+    className: {
+      table: {
+        disable: true,
+      },
     },
   },
 } as ComponentMeta<typeof Heading>;
@@ -33,6 +42,6 @@ const Template: ComponentStory<typeof Heading> = (args) => (
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  size: 1,
+  size: '2xl',
   color: color.black,
 };

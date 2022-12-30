@@ -12,7 +12,7 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: [1, 2, 3, 4, 5, 6],
+      options: ['2xl', 'xl', 'l', 'm', 's', 'xs'],
     },
     weight: {
       control: { type: 'select' },
@@ -21,6 +21,15 @@ export default {
     color: {
       control: { type: 'select' },
       options: { ...color },
+    },
+    asTag: {
+      control: { type: 'select' },
+      options: { heading: 'h1', paragraph: 'p', span: 'span' },
+    },
+    className: {
+      table: {
+        disable: true,
+      },
     },
   },
 } as ComponentMeta<typeof Paragraph>;
@@ -34,7 +43,6 @@ export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
   text: 'Paragraph',
-  size: 1,
-  weight: '',
+  size: '2xl',
   color: color.black,
 };
